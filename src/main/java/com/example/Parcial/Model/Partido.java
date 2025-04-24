@@ -1,5 +1,6 @@
 package com.example.Parcial.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -10,7 +11,10 @@ public class Partido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_partido;
     private Date fecha;
+
+    @Column(length = 100)
     private String estadio;
+
     private int goles_local;
     private int goles_visita;
 
@@ -23,6 +27,7 @@ public class Partido {
     private Equipo equipoVisita;
 
     @OneToMany(mappedBy = "partido", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<EstadisticaJugador> estadisticas;
 
     public Partido() {}

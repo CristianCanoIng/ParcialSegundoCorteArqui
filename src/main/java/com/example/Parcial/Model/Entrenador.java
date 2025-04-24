@@ -7,7 +7,11 @@ public class Entrenador {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_entrenador;
+
+    @Column(length = 100)
     private String nombre;
+
+    @Column(length = 100)
     private String especialidad;
 
     @ManyToOne
